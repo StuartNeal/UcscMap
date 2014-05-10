@@ -1,7 +1,7 @@
 package com.example.ucscmap;
 
 import com.google.android.gms.common.GooglePlayServicesUtil;
-
+import com.google.android.gms.maps.*;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
