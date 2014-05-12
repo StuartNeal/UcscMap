@@ -39,5 +39,13 @@ public class Classroom {
 	public void recalculateLocation(LatLng newTag){
 		tags.add(newTag);
 		//do math to average these tags to get a location
+		double lat = 0, lng = 0;
+		for (LatLng l : tags){
+			lat += l.latitude;
+			lng += l.longitude;
+		}
+		lat /= tags.size();
+		lng /= tags.size();
+		location = new LatLng(lat, lng);
 	}
 }
