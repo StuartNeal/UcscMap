@@ -71,8 +71,8 @@ public class MapActivity extends FragmentActivity{
         //Sets up the search widget
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        //SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        //searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
         
         return super.onCreateOptionsMenu(menu);
     }
