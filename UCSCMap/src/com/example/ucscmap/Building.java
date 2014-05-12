@@ -20,13 +20,15 @@ public class Building {
 	 * The LatLng location of the building.
 	 */
 	public LatLng location;
+	private ArrayList<LatLng> tags;
 	
 	/**
 	 * @param _location The LatLng location of the building.
 	 */
 	public Building(LatLng _location){
 		classrooms = new ArrayList<Classroom>();
-		location = _location;
+		tags = new ArrayList<LatLng>();
+		recalculateLocation(_location);
 	}
 	
 	/**
@@ -39,5 +41,15 @@ public class Building {
 		//if so, update the location of the classroom.
 		//otherwise, add a new classroom to the list with the new location and name.
 		classrooms.add(new Classroom(nameNumber, _location));
+	}
+	
+	/**
+	 * Takes a LatLng and adds it to the tagged locations for the building, 
+	 * recalculating the averaged tag location of the building.
+	 * @param newTag The new tagged latitude/longitude location of the building.
+	 */
+	public void recalculateLocation(LatLng newTag){
+		tags.add(newTag);
+		//do math to average these tags to get a location
 	}
 }
