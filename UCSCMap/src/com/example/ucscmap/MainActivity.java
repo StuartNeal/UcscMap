@@ -1,18 +1,19 @@
 package com.example.ucscmap;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.os.Build;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +22,12 @@ public class MainActivity extends ActionBarActivity {
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+					.add(R.id.container, new LoginFragment()).commit();
 		}
+		
+		//addListenerOnButton();
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -44,6 +47,20 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	/*public void addListenerOnButton(){
+		
+		Button loginButton = (Button)findViewById(R.id.button1);
+		
+		loginButton.setOnClickListener( new OnClickListener() {
+			
+				public void onClick(View v) {
+					//check the login information, then go to the map activity
+					Intent intent = new Intent(MainActivity.this, MapActivity.class);
+					startActivity(intent);
+				}
+			});
+		}*/
 
 	public void onLoginButtonPressed(View v){
 		//check the login information, then go to the map activity
@@ -51,21 +68,20 @@ public class MainActivity extends ActionBarActivity {
 		startActivity(intent);
 	}
 	
-	/**
-	 * A placeholder fragment containing a simple view.
-	 */
-	public static class PlaceholderFragment extends Fragment {
+	//Login Screen Fragment
+	public static class LoginFragment extends Fragment{
 
-		public PlaceholderFragment() {
+		public LoginFragment() {
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container,
-					false);
+			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 			return rootView;
+			
 		}
+		
 	}
 
 }

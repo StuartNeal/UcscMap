@@ -7,6 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#00378A"
     tools:context="com.example.ucscmap.MainActivity$PlaceholderFragment" >
 
     <EditText
@@ -16,6 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:ems="10"
+        android:maxLines="1"
         android:text="@string/username_field_text" >
 
         <requestFocus />
@@ -28,14 +30,17 @@
         android:layout_below="@+id/editText1"
         android:layout_centerHorizontal="true"
         android:ems="10"
+        android:maxLines="1"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText1"
         android:layout_alignRight="@+id/editText2"
         android:layout_below="@+id/editText2"
+        
         android:text="@string/login_button_text" />
 
     <TextView

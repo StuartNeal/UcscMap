@@ -38,7 +38,8 @@
 
         <activity 
             android:name="com.example.ucscmap.MainActivity" 
-            android:label="@string/title_activity_main">
+            android:label="@string/title_activity_main"
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
