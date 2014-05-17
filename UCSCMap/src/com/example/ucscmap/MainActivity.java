@@ -1,20 +1,20 @@
 package com.example.ucscmap;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.os.Build;
+import android.widget.EditText;
 
 public class MainActivity extends FragmentActivity {
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,8 +50,17 @@ public class MainActivity extends FragmentActivity {
 	
 	public void onLoginButtonPressed(View v){
 		//check the login information, then go to the map activity
-		Intent intent = new Intent(this, MapActivity.class);
-		startActivity(intent);
+		EditText usernameField = (EditText)findViewById(R.id.editText1);
+		EditText passwordField = (EditText)findViewById(R.id.editText2);
+		Editable userText = usernameField.getText();
+		Editable passText = passwordField.getText();
+		if (userText.length() == 0 || passText.length() == 0){
+			DialogFragment df = new LoginErrorDialogFragment();
+			df.show(getSupportFragmentManager(), "Login Error");
+		} else {
+			Intent intent = new Intent(this, MapActivity.class);
+			startActivity(intent);
+		}
 	}
 	
 	//Login Screen Fragment

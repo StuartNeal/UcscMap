@@ -40,4 +40,6 @@
 	
 	<!-- Content Description -->
 	<string name="list_item_icon">Item Icon</string>
+	<string name="login_error_string">Please enter your username and password.</string>
+	<string name="okay_text">Okay</string>
 </resources>
