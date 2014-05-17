@@ -1,6 +1,8 @@
 package com.example.ucscmap;
 
 import java.util.ArrayList;
+import java.util.Locale;
+
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -13,7 +15,7 @@ public class Building {
 	 */
 	public String name;
 	/**
-	 * The arraylist containing all of the classrooms within the building.
+	 * The ArrayList containing all of the classrooms within the building.
 	 */
 	public ArrayList<Classroom> classrooms;
 	/**
@@ -32,13 +34,21 @@ public class Building {
 	}
 	
 	/**
-	 * Adds a new classroom to the building.
+	 * Adds a new classroom to the building.  If the classroom already exists, updates its tagged location.
 	 * @param nameNumber The name or number of the classroom.
 	 * @param _location The tagged location of the classroom.
 	 */
 	public void addClassroom(String nameNumber, LatLng _location){
+		//make sure the classroom nameNumber is in a proper format, sans whitespace
+		nameNumber = nameNumber.replaceAll("\\s+", "");
 		//first check to see whether the classroom is a duplicate.
-		//if so, update the location of the classroom.
+		for (Classroom c : classrooms){
+			//if so, update the location of the classroom.
+			if (c.nameNumber.toLowerCase(Locale.ENGLISH).equals(nameNumber.toLowerCase(Locale.ENGLISH))){
+				c.recalculateLocation(_location);
+				break;
+			}
+		}
 		//otherwise, add a new classroom to the list with the new location and name.
 		classrooms.add(new Classroom(nameNumber, _location));
 	}
@@ -51,5 +61,13 @@ public class Building {
 	public void recalculateLocation(LatLng newTag){
 		tags.add(newTag);
 		//do math to average these tags to get a location
+		double lat = 0, lng = 0;
+		for (LatLng l : tags){
+			lat += l.latitude;
+			lng += l.longitude;
+		}
+		lat /= tags.size();
+		lng /= tags.size();
+		location = new LatLng(lat, lng);
 	}
 }

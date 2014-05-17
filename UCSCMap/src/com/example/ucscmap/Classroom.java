@@ -17,7 +17,7 @@ public class Classroom {
 	 */
 	public LatLng location;
 	/**
-	 * The arraylist containing all of the tagged locations for the classroom.
+	 * The ArrayList containing all of the tagged locations for the classroom.
 	 */
 	private ArrayList<LatLng> tags;
 	
