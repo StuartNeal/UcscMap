@@ -48,20 +48,6 @@ public class MainActivity extends FragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	/*public void addListenerOnButton(){
-		
-		Button loginButton = (Button)findViewById(R.id.button1);
-		
-		loginButton.setOnClickListener( new OnClickListener() {
-			
-				public void onClick(View v) {
-					//check the login information, then go to the map activity
-					Intent intent = new Intent(MainActivity.this, MapActivity.class);
-					startActivity(intent);
-				}
-			});
-		}*/
-
 	public void onLoginButtonPressed(View v){
 		//check the login information, then go to the map activity
 		Intent intent = new Intent(this, MapActivity.class);
