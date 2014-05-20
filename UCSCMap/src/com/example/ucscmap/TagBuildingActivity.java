@@ -1,10 +1,8 @@
 package com.example.ucscmap;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,27 +10,26 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import com.google.android.gms.maps.model.LatLng;
 
-public class MainActivity extends FragmentActivity {
-	
+public class TagBuildingActivity extends ActionBarActivity {
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_tag_building);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new LoginFragment()).commit();
+					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		
-		//addListenerOnButton();
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.tag_building, menu);
 		return true;
 	}
 
@@ -47,36 +44,28 @@ public class MainActivity extends FragmentActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	public void onLoginButtonPressed(View v){
-		//check the login information, then go to the map activity
-		EditText usernameField = (EditText)findViewById(R.id.editTextMain1);
-		EditText passwordField = (EditText)findViewById(R.id.editTextMain2);
-		Editable userText = usernameField.getText();
-		Editable passText = passwordField.getText();
-		if (userText.length() == 0 || passText.length() == 0){
-			DialogFragment df = new LoginErrorDialogFragment();
-			df.show(getSupportFragmentManager(), "Login Error");
-		} else {
-			Intent intent = new Intent(this, MapActivity.class);
-			startActivity(intent);
-		}
-	}
-	
-	//Login Screen Fragment
-	public static class LoginFragment extends Fragment{
 
-		public LoginFragment() {
+	/**
+	 * A placeholder fragment containing a simple view.
+	 */
+	public static class PlaceholderFragment extends Fragment {
+
+		public PlaceholderFragment() {
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState) {
-			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+			View rootView = inflater.inflate(R.layout.fragment_tag_building,
+					container, false);
 			return rootView;
-			
 		}
-		
 	}
 
+	public void onEnterButtonPressed(View v){
+		EditText et = (EditText)findViewById(R.id.editTextTagB1);
+		Editable buildingName = et.getText();
+		//add the new building tag - make sure we get the location first.
+		//AppInfo.getInstance().addBuilding(buildingName.toString(), new LatLng(0.0, 0.0));
+	}
 }

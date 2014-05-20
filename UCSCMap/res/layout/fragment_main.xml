@@ -10,47 +10,47 @@
     tools:context="com.example.ucscmap.MainActivity$PlaceholderFragment" >
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editTextMain1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:ems="10"
         android:maxLines="1"
-        android:text="@string/username_field_text" >
+        android:text="@string/field_text_username" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextMain2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
+        android:layout_below="@+id/editTextMain1"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:maxLines="1"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:maxLines="1" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonMain1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_alignRight="@+id/editText2"
-        android:layout_below="@+id/editText2"
-        android:onClick="@string/callback_login_button"
-        android:text="@string/login_button_text" />
+        android:layout_alignLeft="@+id/editTextMain1"
+        android:layout_alignRight="@+id/editTextMain2"
+        android:layout_below="@+id/editTextMain2"
+        android:onClick="@string/button_callback_login"
+        android:text="@string/button_text_login" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewMain1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/editText2"
-        android:layout_alignBottom="@+id/editText2"
-        android:layout_alignLeft="@+id/editText1"
+        android:layout_alignBaseline="@+id/editTextMain2"
+        android:layout_alignBottom="@+id/editTextMain2"
+        android:layout_alignLeft="@+id/editTextMain1"
         android:layout_marginLeft="14dp"
-        android:text="@string/password_field_text"
+        android:text="@string/field_text_password"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
