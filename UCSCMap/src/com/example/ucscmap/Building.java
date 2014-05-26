@@ -27,7 +27,8 @@ public class Building {
 	/**
 	 * @param _location The LatLng location of the building.
 	 */
-	public Building(LatLng _location){
+	public Building(String _name, LatLng _location){
+		name = _name;
 		classrooms = new ArrayList<Classroom>();
 		tags = new ArrayList<LatLng>();
 		recalculateLocation(_location);
@@ -46,7 +47,7 @@ public class Building {
 			//if so, update the location of the classroom.
 			if (c.nameNumber.toLowerCase(Locale.ENGLISH).equals(nameNumber.toLowerCase(Locale.ENGLISH))){
 				c.recalculateLocation(_location);
-				break;
+				return;
 			}
 		}
 		//otherwise, add a new classroom to the list with the new location and name.

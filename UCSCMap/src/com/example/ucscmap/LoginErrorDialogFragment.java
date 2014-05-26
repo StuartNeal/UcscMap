@@ -16,8 +16,8 @@ public class LoginErrorDialogFragment extends DialogFragment {
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState){
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setMessage(R.string.login_error_string);
-		builder.setNeutralButton(R.string.okay_text, new DialogInterface.OnClickListener() {
+		builder.setMessage(R.string.text_login_error);
+		builder.setNeutralButton(R.string.text_okay, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				//close the dialog box - i.e. do nothing.
