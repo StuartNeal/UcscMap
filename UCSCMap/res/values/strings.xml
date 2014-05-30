@@ -8,6 +8,9 @@
     <string name="button_text_login">Login</string>
     <string name="field_text_username">username</string>
     <string name="field_text_password">password</string>
+    <string name="auto_login">Auto</string>
+    <string name="create_account"><u>Create an Account</u></string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
 
     <!-- Action Bar Buttons -->
     <string name="action_search">Search</string>

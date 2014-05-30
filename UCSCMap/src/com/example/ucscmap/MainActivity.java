@@ -1,5 +1,7 @@
 package com.example.ucscmap;
 
+import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -13,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-public class MainActivity extends FragmentActivity {
+@SuppressLint("NewApi") public class MainActivity extends FragmentActivity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,13 @@ public class MainActivity extends FragmentActivity {
 			startActivity(intent);
 			finish();
 		}
+	}
+	
+	//Switches to account creation fragment if text is pressed
+	public void onCreateAccountPressed(View v){
+		
+		FragmentManager fragmentManager = getFragmentManager();
+		fragmentManager.beginTransaction().add(R.id.container , new CreateAccountFragment()).commit();
 	}
 	
 	//Login Screen Fragment

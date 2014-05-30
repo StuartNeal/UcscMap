@@ -34,6 +34,14 @@ public class Building {
 		recalculateLocation(_location);
 	}
 	
+	public String getName(){
+		return this.name;
+	}
+	
+	public LatLng getLatLng(){
+		return this.location;
+	}
+	
 	/**
 	 * Adds a new classroom to the building.  If the classroom already exists, updates its tagged location.
 	 * @param nameNumber The name or number of the classroom.

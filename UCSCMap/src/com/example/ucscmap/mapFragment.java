@@ -33,7 +33,7 @@ import android.view.ViewGroup;
 	private static final LatLng OAKES = new LatLng(36.989044 , -122.064408);
 	
 	MapView mapView;
-	GoogleMap map;
+	static GoogleMap map;
 	
 	Marker myMark = null;
 	String title;

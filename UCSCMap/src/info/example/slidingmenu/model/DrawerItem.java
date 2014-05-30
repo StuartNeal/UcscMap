@@ -3,7 +3,6 @@ package info.example.slidingmenu.model;
 public class DrawerItem {
 	private String title;
 	private int icon;
-	private boolean isCounterVisible = false;
 	
 	//Constructors
 	public DrawerItem(){}
