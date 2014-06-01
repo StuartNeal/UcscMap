@@ -15,7 +15,15 @@ public class AppInfo {
 	 */
 	public LatLng currentLocation;
 	
+	/**
+	 * An ArrayList that holds the buildings
+	 */
 	public ArrayList<Building> buildings;
+	
+	/**
+	 * Holds the string returned by the Downloader from various contexts.
+	 */
+	public String downloadedString;
 	
 	/**
 	 * Constructor is protected to defeat instantiation

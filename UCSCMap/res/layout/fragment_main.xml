@@ -16,6 +16,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:ems="10"
+        android:inputType="textVisiblePassword"
         android:singleLine="true"
         android:text="@string/field_text_username" >
 
