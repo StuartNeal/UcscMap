@@ -45,13 +45,6 @@
         android:text="@string/field_text_password"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_logo" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -60,6 +53,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
         android:text="@string/forgot_password"
+        android:onClick="onForgotPasswordPressed"
+        android:clickable="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
@@ -81,7 +76,16 @@
         android:layout_marginTop="28dp"
         android:text="@string/create_account"
         android:onClick="onCreateAccountPressed"
+        android:clickable="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText1"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_logo" />
 
     <CheckBox
         android:id="@+id/checkBox1"
@@ -89,7 +93,7 @@
         android:layout_height="40dp"
         android:layout_alignBaseline="@+id/button1"
         android:layout_alignBottom="@+id/button1"
-        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/textView2"
         android:text="@string/auto_login"
         android:textSize="12sp" />
 

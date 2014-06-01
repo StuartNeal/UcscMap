@@ -5,7 +5,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.view.LayoutInflater;
@@ -17,14 +17,18 @@ import android.widget.EditText;
 
 @SuppressLint("NewApi") public class MainActivity extends FragmentActivity {
 	
+	FragmentManager fragmentManager = getFragmentManager();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_main);	
+		
+		Fragment fragment = new LoginFragment();
 
 		if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new LoginFragment()).commit();
+			fragmentManager.beginTransaction()
+					.add(R.id.container, fragment).commit();
 		}
 	}
 	
@@ -67,8 +71,14 @@ import android.widget.EditText;
 	//Switches to account creation fragment if text is pressed
 	public void onCreateAccountPressed(View v){
 		
-		FragmentManager fragmentManager = getFragmentManager();
 		fragmentManager.beginTransaction().add(R.id.container , new CreateAccountFragment()).commit();
+	}
+	
+	
+	//Switches to forgot password fragment if text is pressed
+	public void onForgotPasswordPressed(View v){
+		
+		fragmentManager.beginTransaction().add(R.id.container , new ForgotPasswordFragment()).commit();
 	}
 	
 	//Login Screen Fragment
