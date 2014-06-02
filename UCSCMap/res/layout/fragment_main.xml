@@ -60,6 +60,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
         android:text="@string/forgot_password"
+        android:onClick="onForgotPasswordPressed"
+        android:clickable="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
@@ -81,7 +83,16 @@
         android:layout_marginTop="28dp"
         android:onClick="onCreateAccountPressed"
         android:text="@string/create_account"
+        android:clickable="true"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText1"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_logo" />
 
     <CheckBox
         android:id="@+id/checkBoxMain1"
@@ -90,6 +101,7 @@
         android:layout_alignBaseline="@+id/buttonMain1"
         android:layout_alignBottom="@+id/buttonMain1"
         android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/textViewMain2"
         android:text="@string/auto_login"
         android:textSize="12sp" />
 

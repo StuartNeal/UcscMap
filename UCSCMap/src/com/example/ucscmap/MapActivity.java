@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -29,6 +30,7 @@ import android.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,15 +39,21 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.SearchView.OnQueryTextListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
-@SuppressLint("NewApi") public class MapActivity extends FragmentActivity{
+@SuppressLint("NewApi") public class MapActivity extends FragmentActivity implements OnQueryTextListener{
 	
+	//Map Variables
 	private static LatLng USER;
 	private GoogleMap map;
 	boolean userMarker = false;
 	Marker myMark = null;
 	String title;
+	
+	//Creates the List of Buildings 
+	static ArrayList<Building> building_list = BuildingList.createBuildingList();
 	
 	//Drawer variables
 	private DrawerLayout drawer;
@@ -137,11 +145,18 @@ import android.widget.Toast;
     	MenuInflater menuInflater = new MenuInflater(this);
         menuInflater.inflate(R.menu.activity_map_actions, menu);
         
+        menu.findItem(R.id.action_search).setVisible(false);
+        
         //Sets up the search widget
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView)MenuItemCompat.getActionView(searchItem);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setQueryHint("Buildings/Classrooms");
+        
+        int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+        TextView tv = (TextView) searchView.findViewById(id);
+        tv.setTextColor(Color.WHITE);
         
         return super.onCreateOptionsMenu(menu);
     }
@@ -270,5 +285,25 @@ import android.widget.Toast;
     	}
     	
     }
+
+	@Override
+	public boolean onQueryTextChange(String newText) {
+		// TODO Auto-generated method stub
+		ListView lv = (ListView)findViewById(R.id.list);
+		
+		if(TextUtils.isEmpty(newText)){
+			
+			lv.clearTextFilter();
+		}else{
+			lv.setFilterText(newText.toString());
+		}
+		return true;
+	}
+
+	@Override
+	public boolean onQueryTextSubmit(String arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
     
 }
