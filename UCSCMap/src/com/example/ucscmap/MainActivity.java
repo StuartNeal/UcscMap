@@ -8,6 +8,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 @SuppressLint("NewApi") public class MainActivity extends FragmentActivity {
+	
+	private static final String MY_SECRET = "becausesecret";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +53,29 @@ import android.widget.EditText;
 	
 	public void onLoginButtonPressed(View v){
 		//check the login information, then go to the map activity
-		EditText usernameField = (EditText)findViewById(R.id.editText1);
-		EditText passwordField = (EditText)findViewById(R.id.editText2);
+		EditText usernameField = (EditText)findViewById(R.id.editTextMain1);
+		EditText passwordField = (EditText)findViewById(R.id.editTextMain2);
+		Log.d("MainActivity", "Got the editTexts...");
 		Editable userText = usernameField.getText();
 		Editable passText = passwordField.getText();
+		Log.d("MainActivity", "Got the text from the fields");
 		if (userText.length() == 0 || passText.length() == 0){
-			DialogFragment df = new LoginErrorDialogFragment();
-			df.show(getSupportFragmentManager(), "Login Error");
+			showLoginErrorFragment();
 		} else {
-			Intent intent = new Intent(this, MapActivity.class);
-			startActivity(intent);
-			finish();
+			Log.d("MainActivity", "Heading into a download, url base " + getString(R.string.text_url_base));
+			AppInfo.getInstance().downloadFrom(getString(R.string.text_url_base) + "login/?secret=" + MY_SECRET + "&username=" + userText + "&password=" + passText, this);
 		}
+	}
+	
+	public void executeLogin(){
+		Intent intent = new Intent(this, MapActivity.class);
+		startActivity(intent);
+		finish();
+	}
+	
+	public void showLoginErrorFragment(){
+		DialogFragment df = new LoginErrorDialogFragment();
+		df.show(getSupportFragmentManager(), "Login Error");
 	}
 	
 	//Switches to account creation fragment if text is pressed

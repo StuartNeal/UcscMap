@@ -37,6 +37,8 @@ public class Downloader extends AsyncTask<String, String, String>{
 				Log.d("Downloader", e.toString());
 			} catch (IOException e){
 				Log.d("Downloader", e.toString());				
+			} catch (Exception e){
+				Log.d("Downloader", e.toString());				
 			}
 			if (response != null){
 				//check status codes for failure
@@ -62,6 +64,15 @@ public class Downloader extends AsyncTask<String, String, String>{
 	
 	protected void onPostExecute(String s){
 		AppInfo.getInstance().downloadedString = s;
+		if (s == null){
+			AppInfo.getInstance().mainActivityReference.showLoginErrorFragment();
+		} else if (s.equals("loginTrue") || s.equals("loginCreateTrue")){
+			AppInfo.getInstance().mainActivityReference.executeLogin();
+		} else if (s.equals("loginFalse")){
+			AppInfo.getInstance().mainActivityReference.showLoginErrorFragment();
+		} else {
+			;
+		}
 	}
 	
 	private String ConvertStreamToString(InputStream is){
