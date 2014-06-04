@@ -10,8 +10,6 @@ import android.support.v4.app.FragmentActivity;
 import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -30,32 +28,13 @@ import android.widget.EditText;
 
 		if (savedInstanceState == null) {
 			fragmentManager.beginTransaction()
-					.add(R.id.container, fragment).commit();
+					.add(R.id.container, fragment)
+					.commit();
 		}
 	}
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-	
+	//Checks the login information, then go to the map activity
 	public void onLoginButtonPressed(View v){
-		//check the login information, then go to the map activity
 		EditText usernameField = (EditText)findViewById(R.id.editTextMain1);
 		EditText passwordField = (EditText)findViewById(R.id.editTextMain2);
 		Log.d("MainActivity", "Got the editTexts...");
@@ -65,17 +44,20 @@ import android.widget.EditText;
 		if (userText.length() == 0 || passText.length() == 0){
 			showLoginErrorFragment();
 		} else {
-			Log.d("MainActivity", "Heading into a download, url base " + getString(R.string.text_url_base));
-			AppInfo.getInstance().downloadFrom(getString(R.string.text_url_base) + "login/?secret=" + MY_SECRET + "&username=" + userText + "&password=" + passText, this);
+			//Log.d("MainActivity", "Heading into a download, url base " + getString(R.string.text_url_base));
+			//AppInfo.getInstance().downloadFrom(getString(R.string.text_url_base) + "login/?secret=" + MY_SECRET + "&username=" + userText + "&password=" + passText, this);
+			executeLogin();
 		}
 	}
 	
+	//If login is successful, switches to the Map Activity
 	public void executeLogin(){
 		Intent intent = new Intent(this, MapActivity.class);
 		startActivity(intent);
 		finish();
 	}
 	
+	//Displays Login Error Dialog
 	public void showLoginErrorFragment(){
 		DialogFragment df = new LoginErrorDialogFragment();
 		df.show(getSupportFragmentManager(), "Login Error");
@@ -84,14 +66,18 @@ import android.widget.EditText;
 	//Switches to account creation fragment if text is pressed
 	public void onCreateAccountPressed(View v){
 		
-		fragmentManager.beginTransaction().add(R.id.container , new CreateAccountFragment()).commit();
+		fragmentManager.beginTransaction().replace(R.id.container , new CreateAccountFragment())
+										.addToBackStack(null)
+										.commit();
 	}
 	
 	
 	//Switches to forgot password fragment if text is pressed
 	public void onForgotPasswordPressed(View v){
 		
-		fragmentManager.beginTransaction().add(R.id.container , new ForgotPasswordFragment()).commit();
+		fragmentManager.beginTransaction().replace(R.id.container , new ForgotPasswordFragment())
+										.addToBackStack(null)
+										.commit();
 	}
 	
 	//Login Screen Fragment
@@ -107,4 +93,15 @@ import android.widget.EditText;
 			return rootView;
 		}
 	}
+	
+	//When the back button is pressed, it returns to the previous fragment if there is one.
+	@Override
+	public void onBackPressed() {
+	    if (getFragmentManager().getBackStackEntryCount() == 0) {
+	        this.finish();
+	    } else {
+	        getFragmentManager().popBackStack();
+	    }
+	}
+
 }

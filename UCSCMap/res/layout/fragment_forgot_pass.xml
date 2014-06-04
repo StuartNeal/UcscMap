@@ -2,15 +2,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000" >
+    android:background="#00458C" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView_ForgotUserTag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Password Reset Page"
+        android:layout_marginTop="166dp"
+        android:text="@string/forgot_pass_instruct_1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#F1B521" />
+
+    <EditText
+        android:id="@+id/editText_ForgotUserTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_ForgotUserTag"
+        android:layout_centerHorizontal="true"
+        android:ems="10">
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView_ForgotEmailTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_ForgotUserTag"
+        android:layout_centerHorizontal="true"
+        android:text="@string/forgot_pass_instruct_2"
+        android:textColor="#F1B521"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/editText_ForgotEmailTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_ForgotEmailTag"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
+    <Button
+        android:id="@+id/button_passRecover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_ForgotEmailTag"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="49dp"
+        android:height="50dp"
+        android:text="@string/button_submit"
+        android:width="100dp" />
+
+    <TextView
+        android:id="@+id/textView_PassRecovery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView_ForgotUserTag"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="66dp"
+        android:textColor="#F1B521"
+        android:text="@string/pass_recovery_title"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

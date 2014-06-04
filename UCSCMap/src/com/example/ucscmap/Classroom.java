@@ -1,6 +1,7 @@
 package com.example.ucscmap;
 
 import java.util.ArrayList;
+
 import com.google.android.gms.maps.model.LatLng;
 
 /**
@@ -29,6 +30,14 @@ public class Classroom {
 		nameNumber = _nameNumber;
 		tags = new ArrayList<LatLng>();
 		recalculateLocation(_location);
+	}
+	
+	public String getName(){
+		return this.nameNumber;
+	}
+	
+	public LatLng getLatLng(){
+		return this.location;
 	}
 	
 	/**

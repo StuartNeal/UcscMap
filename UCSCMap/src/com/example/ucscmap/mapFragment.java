@@ -28,6 +28,9 @@ import android.view.ViewGroup;
 	
 	Marker myMark = null;
 	String title;
+	int setView = 0;
+	
+	Building temp_building;
 
 	public mapFragment(){}
 	
@@ -45,15 +48,29 @@ import android.view.ViewGroup;
 	        
 	        ArrayList<Building> building_list = MapActivity.building_list;
 	        
-	        //Adds markers for buildings
-	        for(int i = 0; i < building_list.size(); i++ ){
-	        	Marker temp = null;
-	        	addMarker(temp, building_list.get(i).location, building_list.get(i).name);
-	        	
-	        }
+	    	Marker temp = null;
 	        
-	        //Moves Camera to starting Position of UCSC Campus
-	        map.moveCamera(CameraUpdateFactory.newLatLngZoom(UCSC, 14));
+	        switch(setView){
+	        	//When One Building is Selected
+	        	case 0:
+	        		//Adds markers for all buildings
+	    	        for(int i = 0; i < building_list.size(); i++ ){
+	    	        	addMarker(temp, building_list.get(i).location, building_list.get(i).name);
+	    	        	
+	    	        }
+	    	        
+	    	        //Moves Camera to starting Position of UCSC Campus
+	    	        map.moveCamera(CameraUpdateFactory.newLatLngZoom(UCSC, 14));
+	    	        
+	        		break;
+	        	case 1:
+	        		addMarker(temp, temp_building.location, temp_building.name);
+	    	        map.moveCamera(CameraUpdateFactory.newLatLngZoom(temp_building.location, 18));
+	        		break;
+	        	default:
+	        		
+	        		break;
+	        }
 	        
 	        return rootView;
 	    }
@@ -84,4 +101,9 @@ import android.view.ViewGroup;
 	    	.icon(BitmapDescriptorFactory
 	    	.fromResource(R.drawable.building_icon)));
 	} 
+	
+	//Gets the current building
+	public void getBuilding(Building b){
+		temp_building = b;
+	}
 }
