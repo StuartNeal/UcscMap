@@ -11,6 +11,11 @@
     <string name="auto_login">Auto</string>
     <string name="create_account"><u>Create an Account</u></string>
     <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="forgot_pass_instruct_1">Username:</string>
+    <string name="forgot_pass_instruct_2">Email:</string>
+    <string name="button_submit">Submit</string>
+    <string name="pass_recovery_title">Password Recovery</string>
+    <string name="button_go_to_map">Go To Map</string>
 
     <!-- Action Bar Buttons -->
     <string name="action_search">Search</string>

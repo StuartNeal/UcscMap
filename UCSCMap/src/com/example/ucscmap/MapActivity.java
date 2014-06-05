@@ -152,7 +152,7 @@ import android.widget.Toast;
         MenuItem searchItem = menu.findItem(R.id.action_search);
         SearchView searchView = (SearchView)MenuItemCompat.getActionView(searchItem);
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setQueryHint("Buildings/Classrooms");
+        searchView.setQueryHint("Buildings");
         
         int id = searchView.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
         TextView tv = (TextView) searchView.findViewById(id);
@@ -289,7 +289,7 @@ import android.widget.Toast;
 	@Override
 	public boolean onQueryTextChange(String newText) {
 		// TODO Auto-generated method stub
-		ListView lv = (ListView)findViewById(R.id.list);
+		ListView lv = (ListView)findViewById(R.id.list_buildings);
 		
 		if(TextUtils.isEmpty(newText)){
 			
@@ -305,5 +305,15 @@ import android.widget.Toast;
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	//When the back button is pressed, it returns to the previous fragment if there is one.
+		@Override
+		public void onBackPressed() {
+		    if (getFragmentManager().getBackStackEntryCount() == 0) {
+		        this.finish();
+		    } else {
+		        getFragmentManager().popBackStack();
+		    }
+		}
     
 }
