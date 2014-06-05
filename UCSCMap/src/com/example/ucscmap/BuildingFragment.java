@@ -114,17 +114,26 @@ import android.widget.TextView;
 			Building temp;
 			GoogleMap m = mapFragment.map;
 			Button button;
+			ListView lv;
 
 			@Override
 			public View onCreateView(LayoutInflater inflater, ViewGroup container,
 					Bundle savedInstanceState) {
+				
 				View rootView = inflater.inflate(R.layout.fragment_building_info, container, false);
+				
+				lv = (ListView)rootView.findViewById(R.id.list_building_classrooms);
 				
 				if(temp != null){
 					String name = temp.name;
 					Log.d("Building Name:", name);
 					TextView tv = (TextView)rootView.findViewById(R.id.building_id);
 					tv.setText(name);
+					
+			        ArrayAdapterClassroom adapter = new ArrayAdapterClassroom(getActivity().getBaseContext(), temp.classrooms);
+
+			        lv.setAdapter(adapter);
+			        lv.setTextFilterEnabled(true);
 				}
 				
 				button = (Button) rootView.findViewById(R.id.go_to_map);

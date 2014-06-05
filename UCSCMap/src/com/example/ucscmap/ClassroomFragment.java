@@ -25,7 +25,21 @@ import android.widget.SearchView.OnQueryTextListener;
 	 @Override
 	 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		 
-		 	ArrayList<Classroom> class_list = null;
+		 	ArrayList<Building> building_list = MapActivity.building_list;
+		 	
+		 	ArrayList<Classroom> class_list = new ArrayList<Classroom>();
+		 	
+		 	//Runs through the building list and grabs classrooms if the building has them
+		 	for(int i = 0; i < building_list.size(); i++){
+		 		
+		 		Building curr = building_list.get(i);
+		 		
+		 		if(!building_list.get(i).classrooms.isEmpty()){
+		 			for(int j = 0; j < curr.classrooms.size(); j++){
+		 				class_list.add(curr.classrooms.get(j));
+		 			}
+		 		}
+		 	}
 	  
 	        View rootView = inflater.inflate(R.layout.fragment_classrooms, container, false);
 	        

@@ -51,20 +51,26 @@ import android.view.ViewGroup;
 	    	Marker temp = null;
 	        
 	        switch(setView){
-	        	//When One Building is Selected
 	        	case 0:
 	        		//Adds markers for all buildings
 	    	        for(int i = 0; i < building_list.size(); i++ ){
-	    	        	addMarker(temp, building_list.get(i).location, building_list.get(i).name);
-	    	        	
+	    	        	addBuildingMarker(temp, building_list.get(i).location, building_list.get(i).name);
 	    	        }
-	    	        
 	    	        //Moves Camera to starting Position of UCSC Campus
 	    	        map.moveCamera(CameraUpdateFactory.newLatLngZoom(UCSC, 14));
 	    	        
 	        		break;
+	        	//When One Building is Selected
 	        	case 1:
-	        		addMarker(temp, temp_building.location, temp_building.name);
+	        		//Adds Building marker and building classroom markers
+	        		addBuildingMarker(temp, temp_building.location, temp_building.name);
+	        		
+	        		if(!temp_building.classrooms.isEmpty()){
+	        			ArrayList <Classroom> curr = temp_building.classrooms;
+	        			for(int i = 0; i < temp_building.classrooms.size(); i++){
+	        				addClassroomMarker(temp, curr.get(i).location,curr.get(i).nameNumber);
+	        			}
+	        		}
 	    	        map.moveCamera(CameraUpdateFactory.newLatLngZoom(temp_building.location, 18));
 	        		break;
 	        	default:
@@ -93,14 +99,23 @@ import android.view.ViewGroup;
 		 mapView.onDestroy();
 	 }
 	 
-	//Adds marker
-	private void addMarker(Marker m, LatLng loc, String title){
+	//Adds Building marker
+	private void addBuildingMarker(Marker m, LatLng loc, String title){
 	    m = map.addMarker(new MarkerOptions()
 	    	.position(loc)
 	    	.title(title)
 	    	.icon(BitmapDescriptorFactory
 	    	.fromResource(R.drawable.building_icon)));
 	} 
+	
+	//Adds Building marker
+		private void addClassroomMarker(Marker m, LatLng loc, String title){
+		    m = map.addMarker(new MarkerOptions()
+		    	.position(loc)
+		    	.title(title)
+		    	.icon(BitmapDescriptorFactory
+		    	.fromResource(R.drawable.classroom_icon)));
+		} 
 	
 	//Gets the current building
 	public void getBuilding(Building b){
