@@ -8,9 +8,85 @@
         android:id="@+id/textViewAccountCreate1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="48dp"
         android:text="Account Creation"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextAccountCreate1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewAccountCreate2"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textVisiblePassword"
+        android:textColor="#000000" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textViewAccountCreate3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextAccountCreate1"
+        android:layout_below="@+id/editTextAccountCreate1"
+        android:text="Password"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextAccountCreate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewAccountCreate3"
+        android:layout_below="@+id/textViewAccountCreate3"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/textViewAccountCreate4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextAccountCreate2"
+        android:layout_below="@+id/editTextAccountCreate2"
+        android:text="Confirm password"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextAccountCreate3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewAccountCreate4"
+        android:layout_below="@+id/textViewAccountCreate4"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/textViewAccountCreate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextAccountCreate1"
+        android:layout_below="@+id/textViewAccountCreate1"
+        android:layout_marginTop="32dp"
+        android:text="Username"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/buttonCreateAccount1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editTextAccountCreate1"
+        android:layout_below="@+id/editTextAccountCreate3"
+        android:layout_marginTop="32dp"
+        android:onClick="onCreateButtonPressed"
+        android:text="Create Account" />
 
 </RelativeLayout>

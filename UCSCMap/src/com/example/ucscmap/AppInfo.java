@@ -3,6 +3,8 @@ package com.example.ucscmap;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -21,19 +23,7 @@ public class AppInfo {
 	 * An ArrayList that holds the buildings
 	 */
 	public ArrayList<Building> buildings;
-	
-	/**
-	 * Holds the string returned by the Downloader from various contexts.
-	 */
-	public String downloadedString;
-	
-	/**
-	 * Holds the current instance of the downloader
-	 */
-	private Downloader downloader;
-	
-	public MainActivity mainActivityReference;
-	
+				
 	/**
 	 * Constructor is protected to defeat instantiation
 	 */
@@ -42,8 +32,6 @@ public class AppInfo {
 		//get the current location from the GPS, and download the ArrayList of buildings?
 		currentLocation = null;
 		buildings = null;
-		downloadedString = null;
-		downloader = null;
 	}
 	
 	/**
@@ -75,18 +63,5 @@ public class AppInfo {
 		}
 		//else, add a new building.
 		buildings.add(new Building(name, location));
-	}
-
-	/**
-	 * Takes a string URL and visits it.  
-	 * Meant for use with the ucscMapServer to download information.
-	 * @param url The URL to download from
-	 */
-	public void downloadFrom(String url, MainActivity ma){
-		Log.d("AppInfo", "Creating a new Downloader");
-		downloader = new Downloader();
-		mainActivityReference = ma;
-		Log.d("AppInfo", "Executing on URL " + url);
-		downloader.execute(url);
 	}
 }

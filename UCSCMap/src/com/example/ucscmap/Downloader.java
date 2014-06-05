@@ -24,6 +24,7 @@ public class Downloader extends AsyncTask<String, String, String>{
 		String downloadedString = null;
 		String urlString = urls[0];
 		URI url = URI.create(urlString);
+		Log.d("Downloader", "URL: " + url.toString());
 		int numTries = 0;
 		Log.d("Downloader", "Doing in background");
 		while (downloadedString == null && !isCancelled() && numTries <= MAX_DOWNLOAD_TRIES){
@@ -63,16 +64,6 @@ public class Downloader extends AsyncTask<String, String, String>{
 	}
 	
 	protected void onPostExecute(String s){
-		AppInfo.getInstance().downloadedString = s;
-		if (s == null){
-			AppInfo.getInstance().mainActivityReference.showLoginErrorFragment();
-		} else if (s.equals("loginTrue") || s.equals("loginCreateTrue")){
-			AppInfo.getInstance().mainActivityReference.executeLogin();
-		} else if (s.equals("loginFalse")){
-			AppInfo.getInstance().mainActivityReference.showLoginErrorFragment();
-		} else {
-			;
-		}
 	}
 	
 	private String ConvertStreamToString(InputStream is){
