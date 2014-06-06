@@ -1,14 +1,46 @@
 package com.example.ucscmap;
 
 import java.util.ArrayList;
-
+import android.app.Activity;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
 
 public class BuildingList {
 	
-public static ArrayList<Building> building_list = new ArrayList<Building>();
+	private static BuildingList instance;
+			
+	protected BuildingList(){}
 	
-public static ArrayList<Building> createBuildingList(){
+	public static BuildingList getInstance(){
+		if (instance == null){
+			instance = new BuildingList();
+		}
+		return instance;
+	}
+	
+	public ArrayList<Building> building_list = new ArrayList<Building>();
+	
+	private class BuildingDownloader extends Downloader{
+		@Override
+		protected void onPostExecute(String s){
+			Gson gson = new Gson();
+			ArrayList<Building> newList = null;
+			try{
+				newList = gson.fromJson(s, ArrayList.class);
+			} catch (Exception e){
+			}
+			building_list = newList;
+			MapActivity.building_list = newList;
+		}
+	}
+	
+	public void downloadBuildingList(Activity activity){
+		//Create a downloader to download the Json string of buildings
+		BuildingDownloader downloader = new BuildingDownloader();
+		downloader.execute(activity.getString(R.string.text_url_base) + "getBuildings/?secret=becausesecret");
+	}
+	
+public ArrayList<Building> createBuildingList(){
 	
 	//Colleges 
 	LatLng COWELL = new LatLng(36.996648 , -122.054166);
@@ -189,7 +221,5 @@ public static ArrayList<Building> createBuildingList(){
 	
 	return building_list;
 }	
-	
-	
 
 }

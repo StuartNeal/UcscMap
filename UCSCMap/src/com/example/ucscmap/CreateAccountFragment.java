@@ -64,15 +64,17 @@ import android.widget.EditText;
 		EditText userField = (EditText)getView().findViewById(R.id.editTextAccountCreate1);
 		EditText passField = (EditText)getView().findViewById(R.id.editTextAccountCreate2);
 		EditText passConfirmField = (EditText)getView().findViewById(R.id.editTextAccountCreate3);
+		EditText emailField = (EditText)getView().findViewById(R.id.editTextAccountCreate4);
 		if (userField != null && passField != null && passConfirmField != null){
-			Editable userText = userField.getText();
-			Editable passText = passField.getText();
-			Editable passConfirmText = passConfirmField.getText();
-			if (userText.length() > 0 && passText.length() > 0 && passConfirmText.length() > 0 && passText.toString().equals(passConfirmText.toString())){
+			String userText = userField.getText().toString();
+			String passText = passField.getText().toString();
+			String passConfirmText = passConfirmField.getText().toString();
+			String emailText = emailField.getText().toString();
+			if (userText.length() > 0 && passText.length() > 0 && passConfirmText.length() > 0 && passText.equals(passConfirmText) && emailText.length() > 0){
 				Log.d("CreateAccount", "Sending to server");
 				CreateAccountDownloader downloader = new CreateAccountDownloader();
 				Log.d("CreateAccount", getString(R.string.text_url_base) + "createLogin/?secret=" + MY_SECRET + "&username=" + userText + "&password=" + passText);
-				downloader.execute(getString(R.string.text_url_base) + "createLogin/?secret=" + MY_SECRET + "&username=" + userText + "&password=" + passText);
+				downloader.execute(getString(R.string.text_url_createLogin) + "&username=" + userText + "&password=" + passText + "&email=" + emailText);
 //				downloader.execute("http://10.0.1.3:8000/ucscMapServer/default/createLogin/?secret=" + MY_SECRET + "&username=" + userText + "&password=" + passText);
 			} else {
 				Log.d("CreateAccount", "Empty or non-matching stuff:\nusername " + userText + "password " + passText + "confirmed " + passConfirmText);
