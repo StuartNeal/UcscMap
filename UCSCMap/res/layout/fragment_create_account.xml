@@ -79,13 +79,31 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#FFFFFF" />
 
+    <TextView
+        android:id="@+id/textViewAccountCreate5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editTextAccountCreate3"
+        android:layout_below="@+id/editTextAccountCreate3"
+        android:text="Email"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/editTextAccountCreate4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewAccountCreate5"
+        android:layout_below="@+id/textViewAccountCreate5"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+
     <Button
         android:id="@+id/buttonCreateAccount1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/editTextAccountCreate1"
-        android:layout_below="@+id/editTextAccountCreate3"
-        android:layout_marginTop="32dp"
+        android:layout_alignRight="@+id/editTextAccountCreate3"
+        android:layout_below="@+id/editTextAccountCreate4"
         android:onClick="onCreateButtonPressed"
         android:text="Create Account" />
 
