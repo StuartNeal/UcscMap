@@ -17,6 +17,7 @@
     <string name="pass_recovery_title">Password Recovery</string>
     <string name="button_go_to_map">Go To Map</string>
     <string name="button_add_to_schedule">Add To Schedule</string>
+    <string name="button_add_classroom">Add a Classroom</string>
 
     <!-- Action Bar Buttons -->
     <string name="action_search">Search</string>

@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.google.android.gms.maps.GoogleMap;
 
 //Building Info Fragment
-		@SuppressLint("NewApi") public class BuildingInfoFragment extends Fragment implements OnClickListener{
+@SuppressLint("NewApi") public class BuildingInfoFragment extends Fragment implements OnClickListener{
 
 			public BuildingInfoFragment() {
 			}

@@ -6,7 +6,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class BuildingList {
 	
-	public static ArrayList<Building> building_list = new ArrayList<Building>();
+public static ArrayList<Building> building_list = new ArrayList<Building>();
 	
 public static ArrayList<Building> createBuildingList(){
 	
@@ -37,32 +37,6 @@ public static ArrayList<Building> createBuildingList(){
 	LatLng PORTER = new LatLng(36.994354 , -122.065468);
 	LatLng EIGHT = new LatLng(36.991206, -122.064369);
 	LatLng OAKES = new LatLng(36.989044 , -122.064408);
-	
-	building_list.add(new Building("Cowell", COWELL));
-		building_list.get(0).addClassroom("Adams House", Adams);
-		building_list.get(0).addClassroom("Parkman House", Parkman);
-		building_list.get(0).addClassroom("Prescott House", Prescott);
-		building_list.get(0).addClassroom("Beard House", Beard);
-		building_list.get(0).addClassroom("Morison House", Morison);
-		building_list.get(0).addClassroom("Parrington House", Parrington);
-		building_list.get(0).addClassroom("Turner House", Turner);
-		building_list.get(0).addClassroom("Cowell Apartments 1", CApartments_1);
-		building_list.get(0).addClassroom("Cowell Apartments 2", CApartments_2);
-		building_list.get(0).addClassroom("Cowell Apartments 3", CApartments_3);
-		building_list.get(0).addClassroom("Cowell Apartments 4", CApartments_4);
-		building_list.get(0).addClassroom("Apartment Community Room", CommunityRoom);
-		building_list.get(0).addClassroom("Computer Lab", ComputerLab);
-		building_list.get(0).addClassroom("Cowell Administration", CAdmin);
-		building_list.get(0).addClassroom("Cowell Dining Commons", CDining);
-		
-	building_list.add(new Building("Stevenson", STEVENSON));
-	building_list.add(new Building("Crown", CROWN));
-	building_list.add(new Building("Merrill", MERRILL));
-	building_list.add(new Building("Nine Ten", NINETEN));
-	building_list.add(new Building("Kresge", KRESGE));
-	building_list.add(new Building("Porter", PORTER));
-	building_list.add(new Building("Eight", EIGHT));
-	building_list.add(new Building("Oakes", OAKES));
 	
 	//Buildings
 	LatLng EOP = new LatLng(36.994310, -122.059422);
@@ -124,8 +98,33 @@ public static ArrayList<Building> createBuildingList(){
 	LatLng WagstaffFireside = new LatLng(36.996896, -122.051619);
 	LatLng WellnessCenter = new LatLng(36.993581, -122.054539);
 	LatLng WestFieldHouse = new LatLng(36.991390, -122.064139);
-	
 	LatLng DepartmentMusic = new LatLng(36.993024, -122.060664);
+	
+	building_list.add(new Building("Cowell", COWELL));
+		building_list.get(0).addClassroom("Adams House", Adams);
+		building_list.get(0).addClassroom("Parkman House", Parkman);
+		building_list.get(0).addClassroom("Prescott House", Prescott);
+		building_list.get(0).addClassroom("Beard House", Beard);
+		building_list.get(0).addClassroom("Morison House", Morison);
+		building_list.get(0).addClassroom("Parrington House", Parrington);
+		building_list.get(0).addClassroom("Turner House", Turner);
+		building_list.get(0).addClassroom("Cowell Apartments 1", CApartments_1);
+		building_list.get(0).addClassroom("Cowell Apartments 2", CApartments_2);
+		building_list.get(0).addClassroom("Cowell Apartments 3", CApartments_3);
+		building_list.get(0).addClassroom("Cowell Apartments 4", CApartments_4);
+		building_list.get(0).addClassroom("Apartment Community Room", CommunityRoom);
+		building_list.get(0).addClassroom("Computer Lab", ComputerLab);
+		building_list.get(0).addClassroom("Cowell Administration", CAdmin);
+		building_list.get(0).addClassroom("Cowell Dining Commons", CDining);
+	
+	building_list.add(new Building("Stevenson", STEVENSON));
+	building_list.add(new Building("Crown", CROWN));
+	building_list.add(new Building("Merrill", MERRILL));
+	building_list.add(new Building("Nine Ten", NINETEN));
+	building_list.add(new Building("Kresge", KRESGE));
+	building_list.add(new Building("Porter", PORTER));
+	building_list.add(new Building("Eight", EIGHT));
+	building_list.add(new Building("Oakes", OAKES));
 	
 	building_list.add(new Building("Academic Resources Center - EOP", EOP));
 	building_list.add(new Building("Arboretum", Arboretum));
@@ -186,10 +185,7 @@ public static ArrayList<Building> createBuildingList(){
 	building_list.add(new Building("Wagstaff Fireside Lounge", WagstaffFireside));
 	building_list.add(new Building("Wellness Center", WellnessCenter));
 	building_list.add(new Building("West Field House", WestFieldHouse));
-	
-	
 	building_list.add(new Building("Music Department", DepartmentMusic));
-	
 	
 	return building_list;
 }	

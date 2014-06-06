@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ArrayAdapterBuilding extends BaseAdapter {
@@ -31,8 +32,11 @@ public class ArrayAdapterBuilding extends BaseAdapter {
 		TextView name = (TextView) convertView.findViewById(R.id.itemName);
 		TextView loc = (TextView) convertView.findViewById(R.id.itemLocation);
 		
+		ImageView icon = (ImageView) convertView.findViewById(R.id.itemImage);
+		
 		name.setText(data.get(pos).getName());
 		loc.setText(data.get(pos).getLatLng().toString());
+		icon.setImageResource(R.drawable.building_symbol);
 		
 		return convertView;
 		
