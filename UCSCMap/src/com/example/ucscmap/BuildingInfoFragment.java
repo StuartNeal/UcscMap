@@ -37,6 +37,8 @@ import com.google.android.gms.maps.GoogleMap;
 				
 				lv = (ListView)rootView.findViewById(R.id.list_building_classrooms);
 				
+	    		getActivity().getActionBar().setIcon(R.drawable.building_icon);
+				
 				lv.setOnItemClickListener(new ListView.OnItemClickListener(){
 
 					@Override

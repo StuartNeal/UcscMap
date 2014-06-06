@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+
 import com.google.android.gms.maps.GoogleMap;
 
 //Classroom Info Fragment
@@ -27,6 +28,8 @@ import com.google.android.gms.maps.GoogleMap;
 					Bundle savedInstanceState) {	
 					
 				View rootView = inflater.inflate(R.layout.fragment_classroom_info, container, false);
+				
+	    		getActivity().getActionBar().setIcon(R.drawable.classroom_icon);
 
 				buttonMap = (Button) rootView.findViewById(R.id.go_to_map_class);
 				buttonSchedule = (Button) rootView.findViewById(R.id.button_add_to_schedule);

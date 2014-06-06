@@ -207,18 +207,26 @@ import android.widget.Toast;
     	//Returns home
     	case 0:
     		fragment = new mapFragment();
+    		setTitle("Home");
+    		getActionBar().setIcon(R.drawable.home_icon);
     		break;
     	//Starts Buildings Fragment
     	case 1:
     		fragment = new BuildingFragment();
+    		setTitle("Building");
+    		getActionBar().setIcon(R.drawable.building_icon);
     		break;
     	//Starts Classroom Fragment
     	case 2:
     		fragment = new ClassroomFragment();
+    		setTitle("Classroom");
+    		getActionBar().setIcon(R.drawable.classroom_icon);
     		break;
     	//Starts Schedule Fragment
     	case 3:
     		fragment = new ScheduleFragment();
+    		setTitle("Schedule");
+    		getActionBar().setIcon(R.drawable.schedule_icon);
     		break;
     	//Logs out
     	case 4:
@@ -238,7 +246,7 @@ import android.widget.Toast;
     		
     		drawerList.setItemChecked(pos, true);
     		drawerList.setSelection(pos);
-    		setTitle(navMenuItems[pos]);
+    		//setTitle(navMenuItems[pos]);
     		drawer.closeDrawer(drawerList);
     	}else{
     		Log.e("MapActivity", "Error Creating Fragment");
