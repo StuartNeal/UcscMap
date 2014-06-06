@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_classroom_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1B521"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/button_add_to_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/classroom_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:text="@string/button_add_to_schedule"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/go_to_map_class"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_add_to_schedule"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="@string/button_go_to_map"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/classroom_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/classroom_id"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="34dp"
+        android:src="@drawable/place_holder" />
+
+    <TextView
+        android:id="@+id/classroom_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:gravity="center"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+</RelativeLayout>

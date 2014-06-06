@@ -31,6 +31,7 @@ import android.view.ViewGroup;
 	int setView = 0;
 	
 	Building temp_building;
+	Classroom temp_classroom;
 
 	public mapFragment(){}
 	
@@ -72,6 +73,11 @@ import android.view.ViewGroup;
 	        			}
 	        		}
 	    	        map.moveCamera(CameraUpdateFactory.newLatLngZoom(temp_building.location, 18));
+	        		break;
+	        	case 2:
+	        		//Adds a marker at a single classroom
+	        		addClassroomMarker(temp, temp_classroom.location, temp_classroom.nameNumber);
+	    	        map.moveCamera(CameraUpdateFactory.newLatLngZoom(temp_classroom.location, 18));
 	        		break;
 	        	default:
 	        		
@@ -120,5 +126,10 @@ import android.view.ViewGroup;
 	//Gets the current building
 	public void getBuilding(Building b){
 		temp_building = b;
+	}
+	
+	//Gets the current classroom
+	public void getClassroom(Classroom c){
+		temp_classroom = c;
 	}
 }

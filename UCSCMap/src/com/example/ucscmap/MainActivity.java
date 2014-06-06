@@ -60,6 +60,7 @@ import android.widget.EditText;
 			Log.d("MainActivity", "Heading into a download, url base " + getString(R.string.text_url_base));
 			MainActivityDownloader downloader = new MainActivityDownloader();
 			downloader.execute(getString(R.string.text_url_base) + "login/?secret=" + MY_SECRET + "&username=" + userText + "&password=" + passText);
+			executeLogin();
 		}
 	}
 

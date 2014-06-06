@@ -2,18 +2,25 @@ package com.example.ucscmap;
 
 import java.util.ArrayList;
 
+import com.google.android.gms.maps.GoogleMap;
+
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.SearchView.OnQueryTextListener;
 
 @SuppressLint("NewApi") public class ClassroomFragment extends Fragment implements OnQueryTextListener {
@@ -55,13 +62,22 @@ import android.widget.SearchView.OnQueryTextListener;
 				@Override
 				public void onItemClick(AdapterView<?> a, View v, int i, long l) {
 				//When clicking on a classroom, go to new fragment that contains class information
+					ClassroomInfoFragment frag = new ClassroomInfoFragment();
 					
+					getView().setSelected(true);
+					Classroom temp = (Classroom) lv.getItemAtPosition(i);
+					
+					frag.getCurrClass(temp);
+
+					FragmentManager fragmentManager = getFragmentManager();
+		    		fragmentManager.beginTransaction().replace(R.id.frame_container , frag).addToBackStack(null).commit();	
 				}
 				
 			});
 	          
 	        return rootView;
 	    }
+	 
 	 
 	 @Override
 	 	public void onActivityCreated(Bundle savedInstanceState){
@@ -75,7 +91,7 @@ import android.widget.SearchView.OnQueryTextListener;
 	 		menu.findItem(R.id.action_search).setVisible(true);
 	 		
 	 		SearchView searchView = new SearchView(getActivity());
-	 		searchView.setQueryHint("Buildings");
+	 		searchView.setQueryHint("Classrooms");
 	 		searchView.setOnQueryTextListener(this);
 	 		super.onCreateOptionsMenu(menu, inflater);
 	 	}
