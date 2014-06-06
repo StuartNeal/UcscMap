@@ -53,7 +53,8 @@ import android.widget.Toast;
 	String title;
 	
 	//Creates the List of Buildings 
-	static ArrayList<Building> building_list = BuildingList.createBuildingList();
+	public static ArrayList<Building> building_list;
+	//static ArrayList<Building> building_list = BuildingList.getInstance().
 	
 	//Drawer variables
 	private DrawerLayout drawer;
@@ -73,6 +74,8 @@ import android.widget.Toast;
     protected void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
     	setContentView(R.layout.activity_map);
+    	
+    	BuildingList.getInstance().downloadBuildingList(this);
     	
     	ActionBar actionBar = getActionBar();
     	actionBar.setIcon(R.drawable.home_icon);
